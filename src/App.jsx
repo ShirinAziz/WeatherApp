@@ -8,7 +8,7 @@ function App() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
-    return ((fahrenheit - 32) * 5) / 9;
+    return Math.round(((fahrenheit - 32) * 5) / 9);
   };
 
   const searchLocation = (event) => {
@@ -49,7 +49,7 @@ function App() {
             <p>{data.name}</p>
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp.toFixed(1)}°C</h1> : null}
+            {data.main ? <h1>{data.main.temp}°C</h1> : null}
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
@@ -60,7 +60,7 @@ function App() {
           <div className="bottom">
             <div className="feels">
               {data.main ? (
-                <p className="bold">{data.main.feels_like.toFixed(1)}°C</p>
+                <p className="bold">{data.main.feels_like}°C</p>
               ) : null}
               <p>Feels Like</p>
             </div>
